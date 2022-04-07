@@ -1,6 +1,5 @@
 const express = require('express');
 const fs = require('fs');
-// const log = require('../log.csv')
 const morgan = require('morgan')
 const path = require('path')
 let csvToJson = require('convert-csv-to-json')
@@ -38,20 +37,19 @@ app.get('/', (req, res) => {
     console.log(log)
 
     fs.appendFile("./server/log.csv", `${log}\n`, (err) => {
+
         if (err) {
             console.log(err);
         }
-        // else {
-        //     console.log("created")
-        // }
     });
 
     res.status(200).send('ok');
 });
 
 app.get('/logs', (req, res) => {
-// write your code to return a json object containing the log data here
+
     res.send(csvToJson.getJsonFromCsv("./server/log.csv"))
+
 });
 
 app.get('*', function(req, res){
