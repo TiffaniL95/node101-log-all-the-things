@@ -2,7 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const morgan = require('morgan');
 const path = require('path');
-let csvToJson = require('convert-csv-to-json');
+const csvToJson = require('convert-csv-to-json');
 
 const logStream = fs.createWriteStream(path.join(__dirname, 'log.csv'), {flags: 'a'})
 
